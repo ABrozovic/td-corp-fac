@@ -13,18 +13,17 @@ export const isImpuestosResponse = (val: Result): asserts val is ImpuestosRespon
   if (!('Qr' in val)) throw isnt(val, 'una respuesta de factura');
 };
 
-export const isProductoArray = (val: Result[] | undefined): asserts val is Producto[] => {
+export function isProductoArray(val: Result[] | undefined): asserts val is Producto[] {
   if (Array.isArray(val)) {
     if (!val.every((item) => 'artId' in item && 'artNombre' in item))
       throw isnt(val, 'un array de productos');
-    return;
   }
-};
-export const isDirectorioArray = (
+}
+export function isDirectorioArray(
   val: Result[] | undefined,
-): asserts val is Directorio[] => {
+): asserts val is Directorio[] {
   if (Array.isArray(val)) {
     if (!val.every((item) => 'dirId' in item && 'dirNombre' in item))
       throw isnt(val, 'un array de usuarios');
   }
-};
+}
