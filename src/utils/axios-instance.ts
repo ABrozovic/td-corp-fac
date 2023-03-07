@@ -2,12 +2,12 @@ import axios from 'axios';
 
 import { APIResponse } from '../types/api';
 
-export const MOTOR_API = process.env.MOTOR_ENDPOINT || 'localhost';
+export const MOTOR_API = import.meta.env.VITE_MOTOR_ENDPOINT;
 export const axiosInstance = axios.create({
   baseURL: MOTOR_API,
   auth: {
-    username: process.env.MOTOR_USER || 'user',
-    password: process.env.MOTOR_PASSWORD || 'password',
+    username: import.meta.env.VITE_MOTOR_USER,
+    password: import.meta.env.VITE_MOTOR_PASSWORD,
   },
 });
 export async function getApi(
