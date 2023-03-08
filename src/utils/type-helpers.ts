@@ -9,9 +9,10 @@ function isnt(val: unknown, typeName: string) {
 export const isDirectorio = (val: Result): asserts val is Directorio => {
   if (!('dirId' in val)) throw isnt(val, 'un directorio');
 };
-export const isImpuestosResponse = (val: Result): asserts val is ImpuestosResponse => {
+
+export function isImpuestosResponse(val: Result): asserts val is ImpuestosResponse {
   if (!('Qr' in val)) throw isnt(val, 'una respuesta de factura');
-};
+}
 
 export function isProductoArray(val: Result[] | undefined): asserts val is Producto[] {
   if (Array.isArray(val)) {
